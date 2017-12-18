@@ -1,0 +1,31 @@
+<ion-content padding="true" no-bounce>
+	<div class="totvs-login-title" align="center">
+		Mingle Sample<br>
+	</div>
+	<form [formGroup]="login">
+		<div class="totvs-login-form">
+			<ion-item>
+				<ion-label color="primary" floating>Usuário</ion-label>
+				<ion-input #user formControlName="user" (keyup)="processKeyUp($event, password)" clearInput='true'></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label color="primary" floating>Senha</ion-label>
+				<ion-input #password formControlName="password" type="password" (keyup)="processKeyUp($event, alias)" clearInput='true'></ion-input>
+			</ion-item>
+			<ion-item class="show-pass">
+				<ion-toggle formControlName="showPassword" (ionChange)="managePwd(password)"></ion-toggle>
+				<ion-label>Exibir Senha</ion-label>
+			</ion-item>
+			<ion-item>
+				<ion-label color="primary" floating>Alias</ion-label>
+				<ion-input #alias formControlName="alias" (keyup)="processKeyUpLogin($event, user.value,password.value,alias.value)" #input
+				 (input)="input.value=$event.target.value.toUpperCase()"></ion-input>
+			</ion-item>
+		</div>
+	</form>
+	
+	<button id='loginButton' [disabled]="!login.valid" class="totvs-button" type="submit" ion-button block id="entrar" (click)="signIn(user.value,password.value,alias.value)">
+		Entrar
+	</button>
+</ion-content>
+

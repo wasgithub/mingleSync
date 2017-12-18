@@ -1,21 +1,34 @@
+import { HomePage } from './../pages/home/home';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { HomePage } from '../pages/home/home';
+import { MingleService, MingleError } from '@totvs/mobile-mingle';
+import { LoginPage } from '../pages/login/login';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage: any = '';
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
+  constructor(private _platform: Platform, private _statusBar: StatusBar, private _splashScreen: SplashScreen, private _mingleService: MingleService) {
+    this._init();
+  }
+
+  private _init(): void {
+    this._platform.ready().then(() => {
+      this._mingleService.init().subscribe(
+        (res) => {
+          console.log('Mingle inicializado');
+          this.rootPage = HomePage;
+        },
+        (error: MingleError) => {
+          console.log('Sessão não iniciada');
+          this.rootPage = LoginPage;
+        }
+      );
+      this._statusBar.styleDefault();
+      this._splashScreen.hide();
     });
   }
 }
