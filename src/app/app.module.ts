@@ -13,9 +13,9 @@ export function mingleFactory() {
   
     let config = new Configuration();
   
-    config.app_identifier = '5a32a617c8bee300017fe862';
+    config.app_identifier = 'APP_ID';
     config.environment = 'DEV';
-    config.server = 'http://thfservices.totvs.com.br:8083';
+    config.server = 'https://MINGLE_SERVER';
     config.modules.crashr = false;
     config.modules.usage_metrics = true;
     config.modules.gateway = true;
