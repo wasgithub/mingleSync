@@ -7,12 +7,52 @@
 </ion-header>
 
 <ion-content padding>
-  Parabéns.
+  <ion-label>
+    Parabéns.
+  </ion-label>
   <p>
     Você está autenticado no Mingle
   </p>
 
   <button class="totvs-button" type="button" ion-button block (click)="logout()">
 		Sair
-	</button>
+  </button>
+  
+  <button class="totvs-button" type="button" ion-button block (click)="get()">
+		GET
+  </button>
+  
+  <button class="totvs-button" type="button" ion-button block (click)="getUrl()">
+		GetUrl
+  </button>
+  
+<!-- Sync-->
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <button ion-button primary block icon-left (click)="newCustomer()">
+        <ion-icon name="add"></ion-icon>
+        NOVO</button>
+    </ion-col>
+    <ion-col >
+        <button ion-button primary block icon-left (click)="sync()">
+          <ion-icon name="git-compare"></ion-icon>
+          SYNC</button>
+    </ion-col>
+  </ion-row>  
+    
+  <ion-list>
+      <ion-item *ngFor="let customer of customers" (click)="itemTapped($event, customer)">
+        {{ customer.name }}
+      </ion-item>
+      <ion-item *ngIf="!customers || customers.length == 0">
+        Nenhum cliente encontrado
+      </ion-item>
+    </ion-list>
+    
+</ion-grid>
+  
+  
+  
 </ion-content>

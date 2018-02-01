@@ -27,5 +27,9 @@
 	<button id='loginButton' [disabled]="!login.valid" class="totvs-button" type="submit" ion-button block id="entrar" (click)="signIn(user.value,password.value,alias.value)">
 		Entrar
 	</button>
+
+	<button class="totvs-button" type="button" ion-button block (click)="getUrl()">
+		GetUrl
+	</button>	
 </ion-content>
 

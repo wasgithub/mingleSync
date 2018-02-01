@@ -28,9 +28,9 @@ export class LoginPage {
 	) {
 
 		this.login = this.formBuilder.group({
-			user: ['', Validators.required],
-			password: [''],
-			alias: ['', Validators.required],
+			user: ['leonardo', Validators.required],
+			password: ['leonardo'],
+			alias: ['PREFIX_WAS', Validators.required],
 			showPassword: false
 		});
 	}
@@ -87,5 +87,9 @@ export class LoginPage {
 			this.signIn(user, password, alias);
 		}
 	}
+
+	getUrl(){
+		//this._loginService.getUrl();
+	  }	
 
 }

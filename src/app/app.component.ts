@@ -25,6 +25,8 @@ export class MyApp {
         (error: MingleError) => {
           console.log('Sessão não iniciada');
           this.rootPage = LoginPage;
+          // this.rootPage = LoginPage;
+
         }
       );
       this._statusBar.styleDefault();
