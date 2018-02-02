@@ -29,7 +29,6 @@ export class HomePage {
               private thfSync: THFSyncService, 
               private toastCtrl: ToastController,
               private mingle: MingleService
-
               ) {
     this.currentPage = 1;
     this.hasNext = false;
@@ -51,20 +50,20 @@ export class HomePage {
       idField: 'id'
     });
 
-    return this.thfSync.prepare([customerSchema], new THFSyncConfig(THFNetworkType._ethernet, 30, ))//{ instance: this.mingle.gateway, methodName: 'getUrlApi' }
+    return this.thfSync.prepare([customerSchema], new THFSyncConfig(THFNetworkType._ethernet, 4500))
       .then(() => {
-        this.thfSync.sync();
-        // this.thfSync.loadData()
-        //   .subscribe((res) => {
-        //     console.log("Retorno subscribe");
-        //     res.forEach(
-        //       (el) => {
-        //         console.log('Entity: ' + el.entity + ' (' + el.data.length + ' loaded)');
-        //         this.customers = el.data;
-        //       }
-        //     )
-        //   });        
-        // console.log("Schemas mapped");
+        // this.thfSync.sync();
+        this.thfSync.loadData()
+          .subscribe((res) => {
+            console.log("Retorno subscribe");
+            res.forEach(
+              (el) => {
+                console.log('Entity: ' + el.entity + ' (' + el.data.length + ' loaded)');
+                this.customers = el.data;
+              }
+            )
+          });        
+        console.log("Schemas mapped");
       });
   }
 

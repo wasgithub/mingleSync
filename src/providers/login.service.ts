@@ -42,13 +42,13 @@ export class LoginService {
         
       }
 
-    getUrlMigle(){
-        try {
-            console.log(this.mingle.gateway.getUrlApi());   
-        } catch(err) {
-            console.log('Erro do xitao: ', err);
-        }
-    }
+    // getUrlMigle(){
+    //     try {
+    //         console.log(this.mingle.gateway.getUrlApi());   
+    //     } catch(err) {
+    //         console.log('Erro do xitao: ', err);
+    //     }
+    // }
 
     request() {
         let request = {

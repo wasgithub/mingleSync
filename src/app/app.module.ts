@@ -1,3 +1,4 @@
+import { MyInterceptor } from './../interceptors/my-interceptor';
 import { PROVIDERS } from './../providers/providers';
 import { PAGES } from './../pages/pages';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,7 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Configuration, MingleModule } from '@totvs/mobile-mingle';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 
 
 
@@ -17,6 +18,7 @@ import { THFNetworkService } from '@totvs/thf-sync/services/thf-network/thf-netw
 import { THFStorageModule } from '@totvs/thf-storage';
 import { Network } from '@ionic-native/network';
 import { ThfSyncEditPage } from '../pages/thf-sync-edit/thf-sync-edit';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -42,6 +44,7 @@ export function mingleFactory() {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     MingleModule.forRoot({
 			provide: Configuration,
@@ -67,9 +70,8 @@ export function mingleFactory() {
     THFSyncService,
     THFEventSourcingService,
     THFNetworkService,
-    Network
-    // THFEventSourcingService,
-    
+    Network,
+    { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }
   ]
 })
 export class AppModule {}
