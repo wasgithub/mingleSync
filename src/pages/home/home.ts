@@ -37,10 +37,10 @@ export class HomePage {
 
   mapSchemas(): Promise<any> {
     let customerSchema = new THFModelSchema({
-      // getUrlApi: 'api/v1/customers',
-      // diffUrlApi: 'api/v1/customers/diff',
-      getUrlApi: 'http://thfservices.totvs.com.br/customer-api/api/v1/customers',
-      diffUrlApi: 'http://thfservices.totvs.com.br/customer-api/api/v1/customers/diff',
+      getUrlApi: '/ping',
+      diffUrlApi: 'api/v1/customers/diff',
+      // getUrlApi: 'http://thfservices.totvs.com.br/customer-api/api/v1/customers',
+      // diffUrlApi: 'http://thfservices.totvs.com.br/customer-api/api/v1/customers/diff',
       name: 'Customers',
       fields: [
         'id', 'name'

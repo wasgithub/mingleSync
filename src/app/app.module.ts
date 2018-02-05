@@ -6,7 +6,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Configuration, MingleModule } from '@totvs/mobile-mingle';
+import { Configuration, MingleModule, SyncInterceptor } from '@totvs/mobile-mingle';
 import { MyApp } from './app.component';
 // import { HomePage } from '../pages/home/home';
 
@@ -71,7 +71,7 @@ export function mingleFactory() {
     THFEventSourcingService,
     THFNetworkService,
     Network,
-    { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: SyncInterceptor, multi: true }
   ]
 })
 export class AppModule {}

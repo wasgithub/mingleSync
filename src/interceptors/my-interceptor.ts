@@ -7,10 +7,15 @@ import { Observable } from 'rxjs/Observable';
 export class MyInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log("Estou no interceptor");
-        console.log(req);
-        const authReq = req.clone({
-            headers: req.headers.set('Accept-Language', 'Felipe')
-        });
-        return next.handle(authReq);
+        console.log('URL: ', req.url);
+        if(req.url.indexOf('http') == -1) {
+            const newReq = req.clone({
+                url: 'http://www.google.com/' + req.url
+            });
+            return next.handle(newReq);
+        } else {
+            return next.handle(req);
+        }
+        
     }
 }
