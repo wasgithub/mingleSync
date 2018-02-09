@@ -13,59 +13,50 @@ export class LoginService {
 
     signIn(user: string, password: string, alias: string, preventEmmit?: boolean): Observable<AuthResponse> {
         return this.mingle.auth.protheus(user, password, alias, preventEmmit);
-        
+
     }
 
     signOut(): Observable<null> {
         return this.mingle.auth.logout();
     }
 
-    get(){
+    get() {
         let request = {
-          url: '/CRMMCONTACTS/95779'
+            url: '/CRMMCONTACTS/95779'
             // url: 'customer-api/api/v1/customers'
         };
-         
-        let params = {
-          page: 1,
-          pageSize: 10
-        };
-         
-        this.mingle.gateway
-          .get(new RequestOptions(request), params)
-        //   .map(response => <Customer>response)
-          .subscribe(
-            (customers) => {
-                console.dir(customers);
-            }
-          );
-        
-      }
 
-    // getUrlMigle(){
-    //     try {
-    //         console.log(this.mingle.gateway.getUrlApi());   
-    //     } catch(err) {
-    //         console.log('Erro do xitao: ', err);
-    //     }
-    // }
+        let params = {
+            page: 1,
+            pageSize: 10
+        };
+
+        this.mingle.gateway
+            .get('/CRMMCONTACTS/95779', {}, params)
+            .subscribe(
+                (res) => {
+                    console.dir(res);
+                }
+            );
+
+    }
 
     request() {
         let request = {
             url: 'ping'
         };
-        
+
         this.mingle.gateway
-            .get(new RequestOptions(request))
+            .get('ping', {})
             .map((res) => {
-              console.log('Res: ', res);
-              return res;
+                console.log('Res: ', res);
+                return res;
             })
             .subscribe(
-            (res) => {
-            console.log('RES: ', res);
-            });
-        }        
-    
+                (res) => {
+                    console.log('RES: ', res);
+                });
+    }
+
 }
 
