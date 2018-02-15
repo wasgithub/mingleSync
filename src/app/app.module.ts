@@ -1,4 +1,3 @@
-import { MyInterceptor } from './../interceptors/my-interceptor';
 import { PROVIDERS } from './../providers/providers';
 import { PAGES } from './../pages/pages';
 import { BrowserModule } from '@angular/platform-browser';

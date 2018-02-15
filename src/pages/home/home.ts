@@ -7,11 +7,8 @@ import { THFSyncService } from '@totvs/thf-sync/services/thf-sync/thf-sync.servi
 import { THFModelSchema } from '@totvs/thf-sync/models/thf-model-schema';
 import { THFSyncConfig } from '@totvs/thf-sync/models/thf-sync-config';
 import { THFNetworkType } from '@totvs/thf-sync/enums/thf-network-type.enum';
-import { THFRequestType } from '@totvs/thf-sync/enums/thf-request-type.enum';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { ThfSyncEditPage } from '../thf-sync-edit/thf-sync-edit';
-import { MingleService } from '@totvs/mobile-mingle';
-
 
 @Component({
   selector: 'page-home',
@@ -27,8 +24,7 @@ export class HomePage {
               private _loginService: LoginService, 
               private _app: App, 
               private thfSync: THFSyncService, 
-              private toastCtrl: ToastController,
-              private mingle: MingleService
+              private toastCtrl: ToastController
               ) {
     this.currentPage = 1;
     this.hasNext = false;

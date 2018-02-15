@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { MingleService } from '@totvs/mobile-mingle';
 import { AuthResponse } from "@totvs/mobile-mingle/dist/models/authentication-data.model";
 import { Observable } from "rxjs/Observable";
-import { RequestOptions } from '@angular/http';
 
 @Injectable()
 export class LoginService {
@@ -21,11 +20,7 @@ export class LoginService {
     }
 
     get() {
-        let request = {
-            url: '/CRMMCONTACTS/95779'
-            // url: 'customer-api/api/v1/customers'
-        };
-
+        
         let params = {
             page: 1,
             pageSize: 10
@@ -42,10 +37,6 @@ export class LoginService {
     }
 
     request() {
-        let request = {
-            url: 'ping'
-        };
-
         this.mingle.gateway
             .get('ping', {})
             .map((res) => {
